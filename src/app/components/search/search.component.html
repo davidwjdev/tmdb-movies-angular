@@ -1,0 +1,46 @@
+<div class="mx-5 mt-5 mb-1 flex flex-col">
+  <div class="flex flex-row w-full lg:w-2/3 self-center">
+    <label class="relative flex w-full">
+      <span class="sr-only">Search</span>
+      <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+        <fa-icon class="text-purple-700" [icon]="faMagnifyingGlass"></fa-icon>
+      </span>
+      <input
+        class="placeholder:italic placeholder:text-slate-400 w-full flex bg-slate-100 text-slate-950 rounded-md ps-10 py-2 pe-1 focus:outline-none focus:border-purple-500 focus:ring-purple-500 focus:ring-1"
+        placeholder="Pesquisar..."
+        type="text"
+        name="search"
+      />
+    </label>
+    <div class="ms-1">
+      <div
+        class="bg-purple-700 rounded-md py-2 px-3 flex flex-row cursor-pointer"
+        (click)="toggleFilters()"
+      >
+        <span>{{ filterChecked() }}</span>
+        <fa-icon
+          class="ms-1"
+          [icon]="isFilterOpen ? faCaretUp : faCaretDown"
+        ></fa-icon>
+      </div>
+    </div>
+  </div>
+  <div
+    class="bg-purple-700 rounded-md mt-1 p-2 flex flex-col lg:w-2/3 lg:self-center shadow-md shadow-purple-900 cursor-pointer"
+    *ngIf="isFilterOpen"
+  >
+    <div
+      *ngFor="let filter of filters"
+      class="py-2 px-3 flex justify-between rounded-md"
+      [ngClass]="{
+        'hover:bg-purple-600 hover:shadow-purple-900 hover:shadow':
+          !filter.isChecked,
+        'bg-purple-900': filter.isChecked
+      }"
+      (click)="setFilter(filter.value)"
+    >
+      <span>{{ filter.name }}</span>
+      <fa-icon *ngIf="filter.isChecked" [icon]="faCheck"></fa-icon>
+    </div>
+  </div>
+</div>

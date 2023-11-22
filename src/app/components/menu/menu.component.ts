@@ -11,7 +11,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 })
 export class MenuComponent {
   faBars = faBars;
-  isMenuOpen = true;
+  isMenuOpen = false;
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;

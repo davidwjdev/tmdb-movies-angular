@@ -1,26 +1,36 @@
-<nav
-  class="font-serif m-5 flex justify-end sm:flex-col md:flex-col lg:flex-row"
->
-  <a class="m-3 hidden lg:inline-block" href="#">Home</a>
-  <a class="m-3 hidden lg:inline-block" href="#">Movies</a>
-  <a class="m-3 hidden lg:inline-block" href="#">Categories</a>
-  <a class="m-3 hidden lg:inline-block" href="#">People</a>
+<nav class="font-serif m-5">
+  <div
+    class="w-full flex flex-row justify-end items-end sm:flex-col md:flex-col lg:flex-row"
+  >
+    <a class="m-3 hidden lg:inline-block hover:text-purple-700" href="#"
+      >Home</a
+    >
+    <a class="m-3 hidden lg:inline-block hover:text-purple-700" href="#"
+      >Movies</a
+    >
+    <a class="m-3 hidden lg:inline-block hover:text-purple-700" href="#"
+      >Categories</a
+    >
+    <a class="m-3 hidden lg:inline-block hover:text-purple-700" href="#"
+      >People</a
+    >
+  </div>
 
   <div class="flex flex-col w-full">
     <div
-      class="lg:hidden cursor-pointer flex justify-end p-3"
+      class="lg:hidden cursor-pointer flex justify-end p-1 mb-3"
       (click)="toggleMenu()"
     >
-      <fa-icon [icon]="faBars"> </fa-icon>
+      <fa-icon class="text-purple-700 fa-2x" [icon]="faBars"> </fa-icon>
     </div>
     <div
       [ngClass]="{ hidden: !isMenuOpen }"
       class="lg:hidden flex flex-col items-center"
     >
-      <a href="#" class="m-1">Home</a>
-      <a href="#" class="m-1">Movies</a>
-      <a href="#" class="m-1">Categories</a>
-      <a href="#" class="m-1">Actors</a>
+      <a href="#" class="m-1 hover:text-purple-700">Home</a>
+      <a href="#" class="m-1 hover:text-purple-700">Movies</a>
+      <a href="#" class="m-1 hover:text-purple-700">Categories</a>
+      <a href="#" class="m-1 hover:text-purple-700">People</a>
     </div>
   </div>
 </nav>
