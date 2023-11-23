@@ -21,7 +21,7 @@ export class SearchComponent {
   faCheck = faCheck;
   filters: { name: string; value: string; isChecked: boolean }[] = [
     { name: 'Movies', value: 'movies', isChecked: true },
-    { name: 'Categories', value: 'categories', isChecked: false },
+    { name: 'TV Show', value: 'tvShow', isChecked: false },
     { name: 'People', value: 'people', isChecked: false },
   ];
   isFilterOpen: boolean = false;

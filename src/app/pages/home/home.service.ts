@@ -21,7 +21,34 @@ export class HomeService {
 
     return this.httpClient
       .get<any>(
-        `${environment.API_PATH}trending/all/day?language=${environment.LANG}`,
+        `${environment.API_PATH}trending/movie/day?language=${environment.LANG}`,
+        { headers }
+      )
+      .pipe(catchError((error) => this.handleErrorService.handleError(error)));
+  }
+
+  getTrendingTvShow(): Observable<any> {
+    const headers = new HttpHeaders({
+      accept: 'application/json',
+      Authorization: `Bearer ${environment.TOKEN_AUTH}`,
+    });
+
+    return this.httpClient
+      .get<any>(
+        `${environment.API_PATH}trending/tv/day?language=${environment.LANG}`,
+        { headers }
+      )
+      .pipe(catchError((error) => this.handleErrorService.handleError(error)));
+  }
+  getTrendingPerson(): Observable<any> {
+    const headers = new HttpHeaders({
+      accept: 'application/json',
+      Authorization: `Bearer ${environment.TOKEN_AUTH}`,
+    });
+
+    return this.httpClient
+      .get<any>(
+        `${environment.API_PATH}trending/person/day?language=${environment.LANG}`,
         { headers }
       )
       .pipe(catchError((error) => this.handleErrorService.handleError(error)));

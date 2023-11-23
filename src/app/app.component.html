@@ -1,7 +1,29 @@
 <header>
   <app-menu></app-menu>
+  <h1 class="font-serif font-black text-6xl text-center text-purple-500">
+    TMDB Movies
+  </h1>
   <app-search></app-search>
 </header>
-<main>
+<main class="my-20">
   <router-outlet></router-outlet>
 </main>
+<footer>
+  <div class="m-10 text-center">
+    Desenvolvido por
+    <a
+      href="https://github.com/davidwjdev"
+      target="_blank"
+      class="text-purple-500"
+    >
+      &#64;davidwjdev
+    </a>
+    utilizando
+    <a
+      href="https://developer.themoviedb.org/"
+      target="_blank"
+      class="text-purple-500"
+      >TMDB API</a
+    >
+  </div>
+</footer>

@@ -1,3 +1,42 @@
-<div class="m-5">
-  <p class="text-slate-300">home works!</p>
+<div class="m-5 mb-10">
+  <p class="font-black text-3xl lg:text-5xl mb-5 font-serif">Trending Movies</p>
+  <div class="lg:grid-cols-5 md:grid-cols-3 grid-cols-2 grid px-5">
+    <div *ngFor="let movie of trendingMovies">
+      <app-img-button
+        [img]="API_IMG_PATH + movie.backdrop_path"
+        [name]="movie.name ?? movie.original_title"
+        [voteAverage]="movie.vote_average"
+        [voteCount]="movie.vote_count"
+        [isPerson]="false"
+      ></app-img-button>
+    </div>
+  </div>
+</div>
+<div class="m-5 mb-10">
+  <p class="font-black text-3xl lg:text-5xl mb-5 font-serif">
+    Trending TV Show
+  </p>
+  <div class="lg:grid-cols-5 md:grid-cols-3 grid-cols-2 grid px-5">
+    <div *ngFor="let movie of trendingTvShow">
+      <app-img-button
+        [img]="API_IMG_PATH + movie.backdrop_path"
+        [name]="movie.name ?? movie.original_title"
+        [voteAverage]="movie.vote_average"
+        [voteCount]="movie.vote_count"
+        [isPerson]="false"
+      ></app-img-button>
+    </div>
+  </div>
+</div>
+<div class="m-5 mb-10">
+  <p class="font-black text-3xl lg:text-5xl mb-5 font-serif">Trending People</p>
+  <div class="lg:grid-cols-5 md:grid-cols-3 grid-cols-2 grid px-5">
+    <div *ngFor="let movie of trendingPeople">
+      <app-img-button
+        [img]="API_IMG_PATH + movie.profile_path"
+        [name]="movie.name ?? movie.original_title"
+        [isPerson]="true"
+      ></app-img-button>
+    </div>
+  </div>
 </div>

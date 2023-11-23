@@ -1,0 +1,29 @@
+<div
+  class="m-3 mb-5 items-center transition-all transform ease-in-out delay-150 cursor-pointer hover:scale-110 hover:opacity-100"
+>
+  <div class="relative">
+    <img
+      [ngClass]="{
+        'max-h-44 w-full object-cover': isPerson
+      }"
+      class="mb-1 rounded-md hover:shadow-neutral-800 hover:shadow-lg opacity-75 hover:opacity-100"
+      [src]="img"
+      [alt]="name"
+    />
+    <div *ngIf="!isPerson">
+      <span
+        [ngClass]="{
+        'bg-green-800': this.voteAverage >= 7.5,
+        'bg-yellow-600': this.voteAverage >= 4 && this.voteAverage < 7.5 ,
+        'bg-red-600': this.voteAverage < 4,
+
+      }"
+        class="absolute rounded-full p-1 bottom-3 right-3 shadow-md shadow-black"
+        >{{ fixVoteAverage() }}</span
+      >
+    </div>
+  </div>
+  <div class="flex">
+    <span class="text-sm font-bold z-10">{{ name }}</span>
+  </div>
+</div>
