@@ -13,9 +13,9 @@ import { SearchComponent } from './components/search/search.component';
   imports: [
     CommonModule,
     RouterOutlet,
-    MenuComponent,
-    SearchComponent,
     FontAwesomeModule,
+    SearchComponent,
+    MenuComponent,
   ],
 })
 export class AppComponent {

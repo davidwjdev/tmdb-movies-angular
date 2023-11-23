@@ -1,6 +1,6 @@
 <div class="mx-5 mt-5 mb-1 flex flex-col">
   <div class="flex flex-row w-full lg:w-2/3 self-center">
-    <label class="relative flex w-full">
+    <label class="relative flex w-full select-none">
       <span class="sr-only">Search</span>
       <span class="absolute inset-y-0 left-0 flex items-center pl-2">
         <fa-icon class="text-purple-700" [icon]="faMagnifyingGlass"></fa-icon>
@@ -14,10 +14,10 @@
     </label>
     <div class="ms-1">
       <div
-        class="bg-purple-700 rounded-md py-2 px-3 flex flex-row cursor-pointer"
+        class="bg-purple-700 rounded-md py-2 px-3 flex flex-row cursor-pointer w-32 justify-between"
         (click)="toggleFilters()"
       >
-        <span>{{ filterChecked() }}</span>
+        <span class="select-none">{{ filterChecked() }}</span>
         <fa-icon
           class="ms-1"
           [icon]="isFilterOpen ? faCaretUp : faCaretDown"
@@ -25,22 +25,24 @@
       </div>
     </div>
   </div>
-  <div
-    class="bg-purple-700 rounded-md mt-1 p-2 flex flex-col lg:w-2/3 lg:self-center shadow-md shadow-purple-900 cursor-pointer"
-    *ngIf="isFilterOpen"
-  >
+  <div class="relative lg:w-2/3 lg:self-center">
     <div
-      *ngFor="let filter of filters"
-      class="py-2 px-3 flex justify-between rounded-md"
-      [ngClass]="{
-        'hover:bg-purple-600 hover:shadow-purple-900 hover:shadow':
-          !filter.isChecked,
-        'bg-purple-900': filter.isChecked
-      }"
-      (click)="setFilter(filter.value)"
+      class="bg-purple-700 rounded-md mt-1 p-2 flex flex-col lg:self-center shadow-md shadow-purple-900 cursor-pointer absolute right-0 top-0"
+      *ngIf="isFilterOpen"
     >
-      <span>{{ filter.name }}</span>
-      <fa-icon *ngIf="filter.isChecked" [icon]="faCheck"></fa-icon>
+      <div
+        *ngFor="let filter of filters"
+        class="py-2 px-3 flex justify-between rounded-md w-36"
+        [ngClass]="{
+          'hover:bg-purple-600 hover:shadow-purple-900 hover:shadow':
+            !filter.isChecked,
+          'bg-purple-900': filter.isChecked
+        }"
+        (click)="setFilter(filter.value)"
+      >
+        <span class="select-none">{{ filter.name }}</span>
+        <fa-icon *ngIf="filter.isChecked" [icon]="faCheck"></fa-icon>
+      </div>
     </div>
   </div>
 </div>
