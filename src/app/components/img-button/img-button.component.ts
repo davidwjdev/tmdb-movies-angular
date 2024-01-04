@@ -17,7 +17,7 @@ export class ImgButtonComponent {
 
   voteAverageString: string = 'N/A';
 
-  fixVoteAverage(): any {
+  formatVoteAverage(): any {
     if (this.voteCount == 0) {
       this.voteAverageString = 'N/A';
     } else {

@@ -4,7 +4,8 @@
   <div class="relative">
     <img
       [ngClass]="{
-        'max-h-44 w-full object-cover': isPerson
+        'h-44 w-full object-cover': isPerson,
+        'h-32 w-full object-center object-cover ': !isPerson
       }"
       class="mb-1 rounded-md hover:shadow-neutral-800 hover:shadow-lg opacity-75 hover:opacity-100"
       [src]="img"
@@ -19,7 +20,7 @@
 
       }"
         class="absolute rounded-full p-1 bottom-3 right-3 shadow-md shadow-black"
-        >{{ fixVoteAverage() }}</span
+        >{{ formatVoteAverage() }}</span
       >
     </div>
   </div>

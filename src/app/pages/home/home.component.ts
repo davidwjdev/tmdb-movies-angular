@@ -5,11 +5,12 @@ import { HandleErrorService } from '../../utils/handle-error.service';
 import { ImgButtonComponent } from '../../components/img-button/img-button.component';
 import { environment } from '../../../environments/environment.development';
 import { Subject, pipe, takeUntil } from 'rxjs';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ImgButtonComponent],
+  imports: [CommonModule, RouterLink, ImgButtonComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.less',
 })

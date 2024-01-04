@@ -1,55 +1,63 @@
-import { HandleErrorService } from './../../utils/handle-error.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment.development';
 import { Observable, catchError } from 'rxjs';
+import { HandleErrorService } from '../../utils/handle-error.service';
+import { environment } from '../../../environments/environment.development';
+import { MovieCollection, MovieDetails, MovieSimilar } from './movie-details';
 
 @Injectable({
   providedIn: 'root',
 })
-export class HomeService {
+export class MovieDetailsService {
   constructor(
     private httpClient: HttpClient,
     private handleErrorService: HandleErrorService
   ) {}
 
-  getTrendingMovies(): Observable<any> {
+  getMovieDetails(id: string): Observable<MovieDetails> {
     const headers = new HttpHeaders({
       accept: 'application/json',
       Authorization: `Bearer ${environment.TOKEN_AUTH}`,
     });
 
     return this.httpClient
-      .get<any>(
-        `${environment.API_PATH}trending/movie/day?language=${environment.LANG}`,
-        { headers }
+      .get<MovieDetails>(
+        `${environment.API_PATH}movie/${id}?language=${environment.LANG}`,
+        {
+          headers,
+        }
       )
       .pipe(catchError((error) => this.handleErrorService.handleError(error)));
   }
 
-  getTrendingTvShow(): Observable<any> {
+  getMovieCollection(id: string): Observable<MovieCollection> {
     const headers = new HttpHeaders({
       accept: 'application/json',
       Authorization: `Bearer ${environment.TOKEN_AUTH}`,
     });
 
     return this.httpClient
-      .get<any>(
-        `${environment.API_PATH}trending/tv/day?language=${environment.LANG}`,
-        { headers }
+      .get<MovieCollection>(
+        `${environment.API_PATH}collection/${id}?language=${environment.LANG}`,
+        {
+          headers,
+        }
       )
       .pipe(catchError((error) => this.handleErrorService.handleError(error)));
   }
-  getTrendingPerson(): Observable<any> {
+
+  getMovieSimilar(id: string): Observable<MovieSimilar> {
     const headers = new HttpHeaders({
       accept: 'application/json',
       Authorization: `Bearer ${environment.TOKEN_AUTH}`,
     });
 
     return this.httpClient
-      .get<any>(
-        `${environment.API_PATH}trending/person/day?language=${environment.LANG}`,
-        { headers }
+      .get<MovieSimilar>(
+        `${environment.API_PATH}movie/${id}/similar?language=${environment.LANG}`,
+        {
+          headers,
+        }
       )
       .pipe(catchError((error) => this.handleErrorService.handleError(error)));
   }

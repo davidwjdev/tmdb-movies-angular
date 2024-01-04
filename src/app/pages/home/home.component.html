@@ -2,13 +2,15 @@
   <p class="font-black text-3xl lg:text-5xl mb-5 font-serif">Trending Movies</p>
   <div class="lg:grid-cols-5 md:grid-cols-3 grid-cols-2 grid px-5">
     <div *ngFor="let movie of trendingMovies">
-      <app-img-button
-        [img]="API_IMG_PATH + movie.backdrop_path"
-        [name]="movie.name ?? movie.original_title"
-        [voteAverage]="movie.vote_average"
-        [voteCount]="movie.vote_count"
-        [isPerson]="false"
-      ></app-img-button>
+      <a [routerLink]="'details/' + movie.id">
+        <app-img-button
+          [img]="API_IMG_PATH + movie.backdrop_path"
+          [name]="movie.name ?? movie.original_title"
+          [voteAverage]="movie.vote_average"
+          [voteCount]="movie.vote_count"
+          [isPerson]="false"
+        ></app-img-button>
+      </a>
     </div>
   </div>
 </div>
@@ -17,12 +19,12 @@
     Trending TV Show
   </p>
   <div class="lg:grid-cols-5 md:grid-cols-3 grid-cols-2 grid px-5">
-    <div *ngFor="let movie of trendingTvShow">
+    <div *ngFor="let tvshow of trendingTvShow">
       <app-img-button
-        [img]="API_IMG_PATH + movie.backdrop_path"
-        [name]="movie.name ?? movie.original_title"
-        [voteAverage]="movie.vote_average"
-        [voteCount]="movie.vote_count"
+        [img]="API_IMG_PATH + tvshow.backdrop_path"
+        [name]="tvshow.name ?? tvshow.original_title"
+        [voteAverage]="tvshow.vote_average"
+        [voteCount]="tvshow.vote_count"
         [isPerson]="false"
       ></app-img-button>
     </div>
@@ -31,10 +33,10 @@
 <div class="m-5 mb-10">
   <p class="font-black text-3xl lg:text-5xl mb-5 font-serif">Trending People</p>
   <div class="lg:grid-cols-5 md:grid-cols-3 grid-cols-2 grid px-5">
-    <div *ngFor="let movie of trendingPeople">
+    <div *ngFor="let person of trendingPeople">
       <app-img-button
-        [img]="API_IMG_PATH + movie.profile_path"
-        [name]="movie.name ?? movie.original_title"
+        [img]="API_IMG_PATH + person.profile_path"
+        [name]="person.name ?? person.original_title"
         [isPerson]="true"
       ></app-img-button>
     </div>
